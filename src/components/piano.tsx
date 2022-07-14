@@ -17,9 +17,9 @@ export function PianoUI ()
 	  keyboardConfig: KeyboardShortcuts.HOME_ROW,
 	});
 	   
-	const synth = new Tone.PolySynth(/* 3, */ Tone.Synth).toDestination();
+	const synth = new Tone.PolySynth(/* 3,*/ Tone.Synth).toDestination();
   
-	return (
+	return ( 
 		<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
 			<Piano
 		  noteRange={{ first: firstNote, last: lastNote }}
