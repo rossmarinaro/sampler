@@ -1,8 +1,6 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-import { Piano } from './components/piano';
+import './App.css';
+import { PianoUI } from './components/piano';
 
 function App() {
   
@@ -22,10 +20,13 @@ function App() {
           Learn React
 
         </a> */}
+          <PianoUI />
       </header>
-      <Piano />
+    
     </div>
   );
 }
 
 export default App;
+
+

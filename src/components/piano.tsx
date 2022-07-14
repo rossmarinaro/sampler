@@ -1,30 +1,42 @@
 
- import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import * as Tone from 'tone';
 import PianoSvg from '../static/piano.svg';
 import PianoJs from '../static/piano.js';
-//import { ToneKeyboardNote } from './note';
+import 'react-piano/dist/styles.css';
+const { Piano, KeyboardShortcuts, MidiNumbers } = require('react-piano');
 
-
-
-function noteUp (elem: HTMLElement, isSharp: boolean)  
-{ 
-	elem.style.background = isSharp ? '#777' : '';
-}
-
-function noteDown ( elem: HTMLElement, isSharp: boolean)  
-{
-
-	const note = elem.dataset.note;
-
-	elem.style.background = isSharp ? 'black' : '#ccc';
-	//synth.triggerAttackRelease([`${note}`], "16n");
-	//event.stopPropagation();
-}
-
-export function Piano ()
+export function PianoUI ()
 {	
+
+	const firstNote = MidiNumbers.fromNote('c3');
+	const lastNote = MidiNumbers.fromNote('f5');
+	const keyboardShortcuts = KeyboardShortcuts.create({
+	  firstNote: firstNote,
+	  lastNote: lastNote,
+	  keyboardConfig: KeyboardShortcuts.HOME_ROW,
+	});
+	   
+	const synth = new Tone.PolySynth(/* 3, */ Tone.Synth).toDestination();
+  
+	return (
+		<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+			<Piano
+		  noteRange={{ first: firstNote, last: lastNote }}
+		  playNote={(midiNumber: number) => { 
+			// Play a given note - see notes below
+			console.log(midiNumber)
+			synth.triggerAttackRelease(midiNumber * 5, "16n");
+		  }}
+		  stopNote={(midiNumber: number) => {
+			// Stop playing a given note - see notes below
+			synth.releaseAll()
+		  }}
+		  width={1000}
+		  keyboardShortcuts={keyboardShortcuts}
+		/>
+		</div>
+	  );
 
 
 	//element.addEventListener("noteon", (e: CustomEvent) => noteon(e.detail));
@@ -32,53 +44,53 @@ export function Piano ()
 	//if (parent) {
 		//parent.appendChild(element);
 	
-		const synth = new Tone.PolySynth(/* 3, */ Tone.Synth).toDestination();
+		// const synth = new Tone.PolySynth(/* 3, */ Tone.Synth).toDestination();
 	
-		let html = '',
-		initialized = false;
+		// let html = '',
+		// initialized = false;
 
-		const [attributes, innerHTML ] = useState(PianoSvg),
-				data = ['C','D','E','F','G','A','B'];
+		// const [attributes, innerHTML ] = useState(PianoSvg),
+		// 		data = ['C','D','E','F','G','A','B'];
 
-		useEffect(()=> {
+		// useEffect(()=> {
 
-			for (let i = 0; i < 13; i++)
-			{
-				let key = document.getElementById(`key${[i]}`),
-					inputDown = 'mouseover',
-					inputUp = 'mouseout';
+		// 	for (let i = 0; i < 13; i++)
+		// 	{
+		// 		let key = document.getElementById(`key${[i]}`),
+		// 			inputDown = 'mouseover',
+		// 			inputUp = 'mouseout';
 
-				key?.addEventListener(inputDown, (e)=> {
-					if (key !== null)
-						key.style.fill = '#ff0000'; 	
-					synth.triggerAttackRelease("C", "16n");
-					//e.stopPropagation();
-				});
+		// 		key?.addEventListener(inputDown, (e)=> {
+		// 			if (key !== null)
+		// 				key.style.fill = '#ff0000'; 	
+		// 			synth.triggerAttackRelease("C", "16n");
+		// 			//e.stopPropagation();
+		// 		});
 
-				key?.addEventListener(inputUp, ()=> {
-					if (key !== null)
-						key.style.fill = key.getAttribute('data') === 'white' ? '#ffffff' : '#000000';
-				});
+		// 		key?.addEventListener(inputUp, ()=> {
+		// 			if (key !== null)
+		// 				key.style.fill = key.getAttribute('data') === 'white' ? '#ffffff' : '#000000';
+		// 		});
 
-				// document.addEventListener('keydown', ()=> {
-				// 	if (key !== null)
-				// 		key.style.fill = '#ff0000';
-				// });
-				// document.addEventListener('keyup', ()=> {
-				// 	if (key !== null)
-				// 		key.style.fill = key.getAttribute('data') === 'white' ? '#ffffff' : '#000000';
-				// });
-			} 
+		// 		// document.addEventListener('keydown', ()=> {
+		// 		// 	if (key !== null)
+		// 		// 		key.style.fill = '#ff0000';
+		// 		// });
+		// 		// document.addEventListener('keyup', ()=> {
+		// 		// 	if (key !== null)
+		// 		// 		key.style.fill = key.getAttribute('data') === 'white' ? '#ffffff' : '#000000';
+		// 		// });
+		// 	} 
 			
-		});
+		// });
 
 
-	return(
+	// return(
 
-		/* React.createElement('svg', ...attributes, {dangerouslySetInnerHTML: {__html: innerHTML}}) */
-		<div style={{margin: 'auto'}} id="container" dangerouslySetInnerHTML={PianoJs}></div>
+	// 	/* React.createElement('svg', ...attributes, {dangerouslySetInnerHTML: {__html: innerHTML}}) */
+	// 	<div style={{margin: 'auto'}} id="container" dangerouslySetInnerHTML={PianoJs}></div>
 		
-	);
+	// );
 }
 	
 
