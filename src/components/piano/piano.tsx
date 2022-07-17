@@ -91,7 +91,7 @@ export function UI ()
 		key?.classList.add('.ReactPiano__KeyActive');
 		key?.classList.remove('.ReactPiano__Key--natural');
 		//console.log('midi num: ', message, 'to note: ', midiToNote(message));
-		synth.triggerAttackRelease(`${midiToNote(message * octave)}`, duration);
+		synth.triggerAttackRelease(`${midiToNote(message * octave)}`, duration);   
 	},
 
 	assignMidiToKeys = () => {
