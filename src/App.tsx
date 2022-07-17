@@ -1,6 +1,7 @@
 
 import './App.css';
-import { PianoUI } from './components/piano';
+import { PIANO } from './components/piano/main';
+
 
 function App() {
   
@@ -20,7 +21,7 @@ function App() {
           Learn React
 
         </a> */}
-          <PianoUI />
+          <PIANO />
       </header>
     
     </div>
