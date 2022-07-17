@@ -4,7 +4,6 @@ import * as Tone from 'tone';
 
 //import 'react-piano/dist/styles.css';
 
-
 //react piano
 
 const { Piano, KeyboardShortcuts, MidiNumbers } = require('react-piano'),
@@ -14,7 +13,7 @@ const { Piano, KeyboardShortcuts, MidiNumbers } = require('react-piano'),
 	require('webmidi');
 
 
-//-------------------------------- PIANO UI
+//--------------------------------- PIANO UI
 
 
 export function UI ()   
