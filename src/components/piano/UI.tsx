@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import * as Tone from 'tone';
+import { MONOSYNTH } from './soundManager';
 
 //import 'react-piano/dist/styles.css';
 
@@ -21,6 +22,7 @@ export function UI ()
 	let 
 		initialized = false,
 		octave = 1;
+
 	const 
 		firstNote = MidiNumbers.fromNote('c3'),
 		lastNote = MidiNumbers.fromNote('f5'),
@@ -28,10 +30,9 @@ export function UI ()
 		firstNote: firstNote,
 		lastNote: lastNote,
 		keyboardConfig: KeyboardShortcuts.HOME_ROW,
-		}),
-		synth = new Tone.PolySynth(/* 3,*/ Tone.MonoSynth /* Tone.Synth */).toDestination();
+		});
 
-	
+
 	useEffect(()=>{ 
 
 		navigator.requestMIDIAccess().then((access: WebMidi.MIDIAccess) => {
@@ -53,7 +54,6 @@ export function UI ()
 						if (command === 248) //up
 							return;
 
-						//console.log(command, key, velocity);
 						playNote(num, '16n');
 					}
 				}
@@ -90,7 +90,7 @@ export function UI ()
 		key?.classList.add('.ReactPiano__KeyActive');
 		key?.classList.remove('.ReactPiano__Key--natural');
 		//console.log('midi num: ', message, 'to note: ', midiToNote(message));
-		synth.triggerAttackRelease(`${midiToNote(message * octave)}`, duration);   
+		MONOSYNTH.triggerAttackRelease(`${midiToNote(message * octave)}`, duration);  
 	},
 
 	assignMidiToKeys = () => {
@@ -116,7 +116,7 @@ export function UI ()
 				id="piano" className='bordered'
 				noteRange={{ first: firstNote, last: lastNote }}
 				playNote={(midiNumber: number) => playNote(midiNumber, '16n')}
-				stopNote={(midiNumber: number) => synth.releaseAll()}
+				stopNote={(midiNumber: number) => MONOSYNTH.triggerRelease()}
 				width={1000}/* window.innerWidth */
 				keyboardShortcuts={keyboardShortcuts}
 			/>

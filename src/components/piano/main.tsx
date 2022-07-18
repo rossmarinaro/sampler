@@ -1,6 +1,6 @@
 import { OptionsManager } from './optionsManager';
 import { SoundManager } from './soundManager';
-import { UI } from './piano';
+import { UI } from './UI';
 
 
 export function PIANO()
