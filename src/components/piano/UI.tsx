@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import * as Tone from 'tone';
-import { MONOSYNTH } from './soundManager';
+import { MONOSYNTH, POLYSYNTH } from './synths';
 
 //import 'react-piano/dist/styles.css';
 
@@ -90,7 +90,7 @@ export function UI ()
 		key?.classList.add('.ReactPiano__KeyActive');
 		key?.classList.remove('.ReactPiano__Key--natural');
 		//console.log('midi num: ', message, 'to note: ', midiToNote(message));
-		MONOSYNTH.triggerAttackRelease(`${midiToNote(message * octave)}`, duration);  
+		POLYSYNTH.triggerAttackRelease(`${midiToNote(message * octave)}`, duration);  
 	},
 
 	assignMidiToKeys = () => {
@@ -116,7 +116,7 @@ export function UI ()
 				id="piano" className='bordered'
 				noteRange={{ first: firstNote, last: lastNote }}
 				playNote={(midiNumber: number) => playNote(midiNumber, '16n')}
-				stopNote={(midiNumber: number) => MONOSYNTH.triggerRelease()}
+				stopNote={(midiNumber: number) => POLYSYNTH.releaseAll()}  //MONOSYNTH.triggerRelease()}
 				width={1000}/* window.innerWidth */
 				keyboardShortcuts={keyboardShortcuts}
 			/>
