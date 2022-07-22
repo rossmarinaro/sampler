@@ -17,7 +17,7 @@ const { Piano, KeyboardShortcuts, MidiNumbers } = require('react-piano'),
 //--------------------------------- PIANO UI
 
 
-export function UI ()   
+export function KEYBOARD ()   
 {	
 	let 
 		initialized = false,
@@ -110,14 +110,13 @@ export function UI ()
 	}
 
 	return ( 
-		<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh'}}>
-			<div id="debug"></div>
+			<div id="piano-ui">
 			<Piano 
 				id="piano" className='bordered'
 				noteRange={{ first: firstNote, last: lastNote }}
 				playNote={(midiNumber: number) => playNote(midiNumber, '16n')}
 				stopNote={(midiNumber: number) => POLYSYNTH.releaseAll()}  //MONOSYNTH.triggerRelease()}
-				width={1000}/* window.innerWidth */
+				/* width={window.innerWidth / 2} */
 				keyboardShortcuts={keyboardShortcuts}
 			/>
 		</div>

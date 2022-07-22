@@ -12,7 +12,7 @@ export function OptionsManager()
         switch(meter)
         {
             case 'partials': POLYSYNTH.set({ oscillator : {partialCount: e.target.value} }); break;
-            case 'octaves': POLYSYNTH.set({ detune: e.target.value }); break;
+            case 'frequency': POLYSYNTH.set({ detune: e.target.value }); break;
         }
     }
 
@@ -21,8 +21,8 @@ export function OptionsManager()
         const partialsMeter = document.getElementById('partials-meter-level');
         partialsMeter?.addEventListener('change', e => getSliderVal(e, 'partials'));
     
-        const octavesMeter = document.getElementById('octaves-meter-level');
-        octavesMeter?.addEventListener('change', e => getSliderVal(e, 'octaves'));
+        const frequencyMeter = document.getElementById('frequency-meter-level');
+        frequencyMeter?.addEventListener('change', e => getSliderVal(e, 'frequency'));
 
     });
 
@@ -34,9 +34,9 @@ export function OptionsManager()
                     <p>Partials</p>
                     <input id="partials-meter-level" type="range" min="0" max="200"/>
                 </div>
-                <div id="octaves" className="bordered midi-options">
-                    <p>Octaves</p>
-                    <input id="octaves-meter-level" type="range" min="0" max="1000"/>
+                <div id="frequency" className="bordered midi-options">
+                    <p>frequency</p>
+                    <input id="frequency-meter-level" type="range" min="0" max="1000"/>
                 </div>
  
            </div>

@@ -211,3 +211,98 @@ li {
 .ReactPiano__NoteLabel--natural.ReactPiano__NoteLabel--active {
   color: #e9d5f8;
 }
+
+
+
+
+/* tmp */
+
+
+
+
+#main-container{
+  height: 800px;
+  display: flex;
+}
+
+#piano-rack { 
+  width: 50%;
+} 
+#piano-ui {
+  background-color: #375087;
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  width: 100%;
+  position: relative;
+} 
+#workspace{
+  display: grid;
+  grid-column: 1fr 1fr;
+}
+
+#assets > input{
+  /* width: 50% */
+  margin: auto;
+  padding: 5%;
+}
+
+*{
+  font-family: monospace;
+/*   border: 1px solid red; */
+}
+
+
+ .container{
+  border: 0.5em solid #2b2b2b;
+}
+body {
+  background-color: #404041;
+}
+p, .form-input {
+  margin: auto; 
+}
+h1{
+  padding-left: 40%;
+}
+canvas {
+  padding: 3% 3% 3% 3%;
+  box-sizing: border-box; 
+  
+}
+
+
+/* no file chosen tooltip */
+input[type='file'] {
+  color: transparent;
+}
+
+
+#output {
+  height: 200px;
+}
+
+
+@media screen and (orientation: portrait)
+{
+  #piano-ui {
+    height: 100px;
+  
+  }
+}
+@media screen and (orientation: landscape)
+{
+
+  #piano-ui {
+    height: 180px;
+  
+  }
+
+}
+@media screen and (min-width: 1030px) /* desktop only */
+{
+  #piano-ui {
+    height: 180px;
+  
+  }
+}
