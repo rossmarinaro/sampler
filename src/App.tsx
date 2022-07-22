@@ -16,8 +16,8 @@ function App() {
         <div className="container" id="piano-rack">
           <PIANO />
         </div>
-        <div className="container" id="workspace">
-{/* 
+        <div className="container" id="workspace">   
+{/* **
           <div class="container" >
             <form >
               <input class="form-input" id="build-project" type="submit" value="Build" name="buildButton"/>
