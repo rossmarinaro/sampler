@@ -33,7 +33,7 @@ export function SoundManager()
 
 
     return (
-        <div style={{display: 'flex', justifyContent: 'space-between', width: '30%'}}>
+        <div className="sound-bank" style={{display: 'flex', justifyContent: 'space-between', width: '30%'}}>
            <div id="sound-bank-square" className="bordered sound-bank-item"><p>Square</p></div>
            <div id="sound-bank-saw" className="bordered sound-bank-item"><p>Saw</p></div>
            <div id="sound-bank-sine" className="bordered sound-bank-item"><p>Sine</p></div>

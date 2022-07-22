@@ -1,4 +1,6 @@
 
+import '../../css/Piano.css';
+
 import React, { useEffect, useState } from 'react';
 import * as Tone from 'tone';
 import { MONOSYNTH, POLYSYNTH } from './synths';

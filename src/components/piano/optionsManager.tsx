@@ -27,16 +27,19 @@ export function OptionsManager()
     });
 
     return (
-        <div style={{float: 'left', width: '30%'}}>
-           <div id="midi-device" className="bordered midi-options"><p>NO DEVICE</p></div>
-           <div id="synth-options" style={{display: 'flex'}}>
-                <div id="partials" className="bordered midi-options">
+        <div className="sound-bank">
+           <div id="midi-options" className="options">
+                <div id="midi-device" className="bordered options"><p>NO DEVICE</p></div>
+                <div id="midi-device" className="bordered options"><p>SELECT MIDI DEVICE</p></div>
+           </div>
+           <div id="synth-options" className="options">
+                <div id="partials">
                     <p>Partials</p>
-                    <input id="partials-meter-level" type="range" min="0" max="200"/>
+                    <input id="partials-meter-level" className="bordered options" type="range" min="0" max="200"/>
                 </div>
-                <div id="frequency" className="bordered midi-options">
+                <div id="frequency">
                     <p>frequency</p>
-                    <input id="frequency-meter-level" type="range" min="0" max="1000"/>
+                    <input id="frequency-meter-level" className="bordered options "type="range" min="0" max="1000"/>
                 </div>
  
            </div>
